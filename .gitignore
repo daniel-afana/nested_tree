@@ -1,0 +1,7 @@
+*.pyc
+*.json
+*~
+*.log
+local_settings.py
+forms.py
+all_categories.html

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All categories</title>
+    <style>
+        input[type=radio] {
+        display: none;
+        }
+
+        input[type=radio]:checked ~ span {
+           background: grey;
+        }
+
+        .cat-name {
+            float: left;
+            margin-right: 10px;
+            width: 300px;
+        }
+
+        .cat-desc {
+            width: 1000px;
+            margin-left: 300px;
+            position: fixed;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+    {% load mptt_tags %}
+    <div class="cat-name">
+        <form action="" method="GET" id="myForm">
+            <ul>
+                {% recursetree nodes %}
+                    <li>
+                        <label for="id_{{ node.pk }}">
+                            <input id="id_{{ node.pk }}" name="category" value="{{ node.pk }}" type="radio">
+                            <span>{{ node.name }}</span>
+
+                            {% if not node.is_leaf_node %}
+                                <ul class="children">
+                                    {{ children }}
+                                </ul>
+                            {% endif %}
+                        </label>
+
+                    </li>
+                {% endrecursetree %}
+            </ul>
+        </form>
+    </div>
+    <div class="cat-desc">
+        {{ desc }}
+    </div>
+
+    <script>
+        $('#myForm input').on('change', function() {
+           var checkedValue;
+           checkedValue = $('input[name="category"]:checked', '#myForm').val();
+           $.get('/get_desc/', {pk: checkedValue}, function(data){
+               $('.cat-desc').html(data);
+           });
+        });
+
+    </script>
+
+
+</body>
+</html>
