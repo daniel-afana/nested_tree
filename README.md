@@ -8,4 +8,4 @@ To populate the database:
 
 
 
-!(img.png?raw=true)
+![Screenshot](img.png?raw=true)
