@@ -57,7 +57,7 @@
         $('#myForm input').on('change', function() {
            var checkedValue;
            checkedValue = $('input[name="category"]:checked', '#myForm').val();
-           $.get('/get_desc/', {pk: checkedValue}, function(data){
+           $.get('/get-desc/', {pk: checkedValue}, function(data){
                $('.cat-desc').html(data);
            });
         });

@@ -20,4 +20,5 @@ from nested_tree_app import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^categories/$', views.show_all, name="categories"),
+    url(r'^get-desc/$', views.get_desc, name="get_desc"),
 ]

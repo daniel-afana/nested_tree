@@ -3,6 +3,7 @@ from nested_tree_app.models import Category
 from django.http import HttpResponse
 from django.views.decorators.cache import cache_page
 
+
 # Create your views here.
 
 @cache_page(60)
@@ -20,3 +21,4 @@ def get_desc(request):
     desc = Category.objects.get(pk=pk).description
 
     return HttpResponse(desc)
+
