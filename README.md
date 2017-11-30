@@ -7,5 +7,6 @@ To populate the database:
 3. Execute populate.py
 
 
+A simple example. Tree with titles on the left side, description of a selected item on the right:
 
 ![Screenshot](img.png?raw=true)
